@@ -18,12 +18,12 @@ var decodeCmd = cobra.Command{
 			fmt.Println("can't decode base64 data")
 		}
 
-		resutlingUUID, err := uuid.FromBytes(res)
+		resultingUUID, err := uuid.FromBytes(res)
 		if err != nil {
 			fmt.Println("input base64 is not an uuid")
 		}
 
-		fmt.Println(resutlingUUID)
+		fmt.Println(resultingUUID)
 	},
 }
 
