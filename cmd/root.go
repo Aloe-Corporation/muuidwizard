@@ -6,6 +6,7 @@ import (
 
 	"github.com/Aloe-Corporation/muuidwizard/cmd/decode"
 	"github.com/Aloe-Corporation/muuidwizard/cmd/encode"
+	"github.com/Aloe-Corporation/muuidwizard/cmd/generate"
 	"github.com/spf13/cobra"
 )
 
@@ -17,6 +18,7 @@ var rootCmd = cobra.Command{
 func Execute() {
 	encode.Init(&rootCmd)
 	decode.Init(&rootCmd)
+	generate.Init(&rootCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
