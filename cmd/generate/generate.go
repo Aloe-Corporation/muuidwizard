@@ -1,20 +1,28 @@
 package generate
 
 import (
-	"encoding/base64"
 	"fmt"
+	"os"
+	"strconv"
 
 	"github.com/google/uuid"
 	"github.com/spf13/cobra"
 )
 
 var generateCmd = cobra.Command{
-	Use:   "generate",
-	Short: "generate a random uuid and display it",
+	Use:   "generate <number>",
+	Short: "generate <number> random uuid and display it",
+	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		uuidToEncode := uuid.New()
-		fmt.Println(uuidToEncode)
-		fmt.Println(base64.StdEncoding.EncodeToString(uuidToEncode[:]))
+		count, err := strconv.Atoi(args[0])
+		if err != nil {
+			fmt.Println("argument is not a valid number")
+			os.Exit(1)
+		}
+		for i := 0; i < count; i++ {
+			uuidToEncode := uuid.New()
+			fmt.Println(uuidToEncode)
+		}
 	},
 }
 
